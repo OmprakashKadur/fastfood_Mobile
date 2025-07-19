@@ -8,9 +8,10 @@ import {
   Pressable,
   Text,
   TouchableOpacity,
-  View,
+  View,Button
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import * as Sentry from '@sentry/react-native'
 import "../global.css";
 export default function Index() {
   return (
@@ -81,6 +82,9 @@ export default function Index() {
               <CartButton />
             </Text>
           </View>
+        )}
+        ListFooterComponent={()=>(
+          <Button title='Try!' onPress={ () => { Sentry.captureException(new Error('First error')) }}/>
         )}
       />
     </SafeAreaView>
