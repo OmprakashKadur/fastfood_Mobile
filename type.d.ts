@@ -1,6 +1,7 @@
 
 
 export interface MenuItem extends Models.Document {
+  $id: string; // <-- Add this
     name: string;
     price: number;
     image_url: string;
@@ -11,12 +12,12 @@ export interface MenuItem extends Models.Document {
     type: string;
 }
 
-export interface Category extends Models.Document {
+export interface Category extends Models.Document {  $id: string; // <-- Add this
     name: string;
     description: string;
 }
 
-export interface User extends Models.Document {
+export interface User extends Models.Document { 
     name: string;
     email: string;
     avatar: string;
