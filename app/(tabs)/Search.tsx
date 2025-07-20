@@ -17,6 +17,7 @@ const Search = () => {
     query: string;
     category: string;
   }>();
+  console.log("s", category, query);
   const {
     data: menuItems,
     refetch,
@@ -24,7 +25,7 @@ const Search = () => {
   } = useAppwrite({
     fn: getMenu,
     params: {
-      category,
+      category: category || undefined,
       query,
       limit: 10,
     },
@@ -33,21 +34,13 @@ const Search = () => {
   const { data: categories } = useAppwrite({ fn: getCategories });
 
   useEffect(() => {
-    if (category || query) {
-      refetch({
-        category,
-        query,
-        limit: 10,
-      });
-    }
+    refetch({
+      category: category || undefined,
+      query,
+      limit: 10,
+    });
   }, [category, query]);
-  if (loading) {
-    return (
-      <SafeAreaView className="bg-white h-full">
-        <Text>Loading...</Text>
-      </SafeAreaView>
-    );
-  }
+
   return (
     <SafeAreaView className="bg-white h-full">
       <FlatList

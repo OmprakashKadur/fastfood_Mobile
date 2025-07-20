@@ -3,6 +3,8 @@ import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import * as Sentry from '@sentry/react-native';
 import useAuthStore from "@/store/auth.store";
+import { verifyInstallation } from 'nativewind';
+
 // Source of this Project : https://www.youtube.com/watch?v=LKrX390fJMw
 Sentry.init({
   dsn: 'https://71a512ad1b6fb169a1645bbe4239b3e0@o4509693513498624.ingest.de.sentry.io/4509693522477136',
@@ -16,6 +18,7 @@ Sentry.init({
 });
 
 export default Sentry.wrap(function RootLayout() {
+    verifyInstallation();
 
     const { isLoading, fetchAuthenticatedUser } = useAuthStore();
 

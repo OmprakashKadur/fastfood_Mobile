@@ -1,8 +1,10 @@
 import { images } from "@/constants";
+import { useCartStore } from "@/store/cart.store";
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 const CartButton = () => {
-  const totalItems = 10;
+  const {getTotalItems} = useCartStore()
+  const totalItems = getTotalItems()
   return (
     <TouchableOpacity className="cart-btn" onPress={() => {}}>
       <Image source={images.bag} className="size-5" resizeMode="contain" />
