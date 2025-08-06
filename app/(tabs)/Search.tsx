@@ -17,7 +17,7 @@ const Search = () => {
     query: string;
     category: string;
   }>();
-  console.log("s", category, query);
+ 
   const {
     data: menuItems,
     refetch,
